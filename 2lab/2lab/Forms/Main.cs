@@ -25,13 +25,14 @@ namespace _2lab
         private Node contextselected = null;
         private Node tree;
         string project_path = "";
+        string perm = ".keks";
         WinNodes q_and_a;
         enum states { auto, handle };
         states state = states.auto;
         public void Main()
         {
             tree = new_node(new Point(50, 360));
-            saveFileDialog1.Filter = "Funduck | *.xml";
+            saveFileDialog1.Filter = "Kekduck | *.keks";
         }
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -196,7 +197,7 @@ namespace _2lab
             {
                 новыйПроектToolStripMenuItem_Click(sender, e);
             }
-            string dircache = "cache -" + DateTime.Now.Ticks;
+            string dircache = "//cache-" + DateTime.Now.Ticks;
             Directory.CreateDirectory(project_path + dircache);
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
             string filename = project_path + dircache;
@@ -214,20 +215,24 @@ namespace _2lab
             writer.Serialize(file, new Node_save(tree));
             file.Close();
 
-            if (!File.Exists(project_path + "//" + "check" + ".xyi"))
-                File.Delete(project_path + "//" + "check" + ".xyi");
-            ZipFile.CreateFromDirectory(project_path + dircache, project_path + "//" + "check" + ".xyi", CompressionLevel.Fastest, false);
+            if (File.Exists(project_path + "//" + "check" + perm))
+                File.Delete(project_path + "//" + "check" + perm);
+            ZipFile.CreateFromDirectory(project_path + dircache, project_path + "//" + "check" + perm, CompressionLevel.Fastest, false);
+            Directory.Delete(project_path + dircache, true);
         }
 
         private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            if (folderBrowserDialog1.SelectedPath != "")
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "")
             {
-                project_path = folderBrowserDialog1.SelectedPath;
+                project_path = openFileDialog1.FileName;
             }
-            //project_path = "C:\\Users\\snodack\\Documents\\project";
-            string filename = project_path + "//Questions.xml";
+            string dircache = "//cache -" + DateTime.Now.Ticks;
+            string project_folder_path = project_path + "/../";
+            Directory.CreateDirectory(project_folder_path + dircache);
+            ZipFile.ExtractToDirectory(project_path, project_folder_path + dircache);
+            string filename = project_folder_path + dircache +"//Questions.xml";
             if (File.Exists(filename))
             {
                 System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
@@ -235,7 +240,7 @@ namespace _2lab
                 factors = (List<Question>)reader.Deserialize(file);
                 file.Close();
             }
-            filename = project_path + "//Factors.xml";
+            filename = project_folder_path + dircache +"//Factors.xml";
             if (File.Exists(filename))
             {
                 System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Factor>));
@@ -244,7 +249,7 @@ namespace _2lab
                 file.Close();
 
             }
-            filename = project_path + "//Nodes.xml";
+            filename = project_folder_path + dircache +"//Nodes.xml";
             if (File.Exists(filename))
             {
                 Node_save tree_save;
@@ -255,7 +260,8 @@ namespace _2lab
                 tree = Init_node(tree_save, tree);
                 RDraw();
             }
-             
+            Directory.Delete(project_folder_path + dircache, true);
+
 
         }
         public Node Init_node(Node_save node_save, Node tree)
