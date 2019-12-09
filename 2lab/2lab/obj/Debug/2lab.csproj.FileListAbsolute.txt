@@ -1,0 +1,64 @@
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\2lab.csprojAssemblyReference.cache
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\_2lab.WinNodes.resources
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\_2lab.Properties.Resources.resources
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.cache
+D:\labs\ing_knowledge\2lab\2lab\2lab\bin\Debug\2lab.exe.config
+D:\labs\ing_knowledge\2lab\2lab\2lab\bin\Debug\2lab.exe
+D:\labs\ing_knowledge\2lab\2lab\2lab\bin\Debug\2lab.pdb
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\2lab.exe
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\2lab.pdb
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\_2lab.Form1.resources
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\_2lab.WQuestion.resources
+D:\labs\ing_knowledge\2lab\2lab\2lab\obj\Debug\_2lab.WAnswer.resources
+D:\2lab\2lab\2lab\bin\Debug\2lab.exe.config
+D:\2lab\2lab\2lab\bin\Debug\2lab.exe
+D:\2lab\2lab\2lab\bin\Debug\2lab.pdb
+D:\2lab\2lab\2lab\obj\Debug\2lab.csprojAssemblyReference.cache
+D:\2lab\2lab\2lab\obj\Debug\_2lab.Form1.resources
+D:\2lab\2lab\2lab\obj\Debug\_2lab.Properties.Resources.resources
+D:\2lab\2lab\2lab\obj\Debug\_2lab.WinNodes.resources
+D:\2lab\2lab\2lab\obj\Debug\_2lab.WQuestion.resources
+D:\2lab\2lab\2lab\obj\Debug\_2lab.WAnswer.resources
+D:\2lab\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.cache
+D:\2lab\2lab\2lab\obj\Debug\2lab.csproj.CoreCompileInputs.cache
+D:\2lab\2lab\2lab\obj\Debug\2lab.exe
+D:\2lab\2lab\2lab\obj\Debug\2lab.pdb
+D:\know\2lab\2lab\2lab\bin\Debug\2lab.exe.config
+D:\know\2lab\2lab\2lab\obj\Debug\2lab.exe
+D:\know\2lab\2lab\2lab\obj\Debug\2lab.pdb
+D:\know\2lab\2lab\2lab\obj\Debug\2lab.csprojResolveAssemblyReference.cache
+D:\know\2lab\2lab\2lab\obj\Debug\_2lab.Form1.resources
+D:\know\2lab\2lab\2lab\obj\Debug\_2lab.Properties.Resources.resources
+D:\know\2lab\2lab\2lab\obj\Debug\_2lab.WinNodes.resources
+D:\know\2lab\2lab\2lab\obj\Debug\_2lab.WQuestion.resources
+D:\know\2lab\2lab\2lab\obj\Debug\_2lab.WAnswer.resources
+D:\know\2lab\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.Cache
+D:\know\2lab\2lab\2lab\bin\Debug\2lab.exe
+D:\know\2lab\2lab\2lab\bin\Debug\2lab.pdb
+D:\know\2lab\2lab\2lab\obj\Debug\_2lab.Test.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\bin\Debug\2lab.exe.config
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\bin\Debug\2lab.exe
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\bin\Debug\2lab.pdb
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\2lab.csprojAssemblyReference.cache
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\_2lab.Form1.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\_2lab.Properties.Resources.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\_2lab.WinNodes.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\_2lab.WQuestion.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\_2lab.WAnswer.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\_2lab.Test.resources
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.cache
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\2lab.exe
+C:\Users\snodack\Documents\Visual Studio 2019\2lab\2lab\2lab\obj\Debug\2lab.pdb
+F:\2lab\2lab\2lab\bin\Debug\2lab.exe.config
+F:\2lab\2lab\2lab\bin\Debug\2lab.exe
+F:\2lab\2lab\2lab\bin\Debug\2lab.pdb
+F:\2lab\2lab\2lab\obj\Debug\2lab.csprojAssemblyReference.cache
+F:\2lab\2lab\2lab\obj\Debug\_2lab.Form1.resources
+F:\2lab\2lab\2lab\obj\Debug\_2lab.Properties.Resources.resources
+F:\2lab\2lab\2lab\obj\Debug\_2lab.WinNodes.resources
+F:\2lab\2lab\2lab\obj\Debug\_2lab.WQuestion.resources
+F:\2lab\2lab\2lab\obj\Debug\_2lab.WAnswer.resources
+F:\2lab\2lab\2lab\obj\Debug\_2lab.Test.resources
+F:\2lab\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.cache
+F:\2lab\2lab\2lab\obj\Debug\2lab.exe
+F:\2lab\2lab\2lab\obj\Debug\2lab.pdb
