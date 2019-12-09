@@ -62,3 +62,16 @@ F:\2lab\2lab\2lab\obj\Debug\_2lab.Test.resources
 F:\2lab\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.cache
 F:\2lab\2lab\2lab\obj\Debug\2lab.exe
 F:\2lab\2lab\2lab\obj\Debug\2lab.pdb
+D:\Git\Expert-System\2lab\2lab\obj\Debug\2lab.csprojAssemblyReference.cache
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.Form1.resources
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.Properties.Resources.resources
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.WinNodes.resources
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.WQuestion.resources
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.WAnswer.resources
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.Test.resources
+D:\Git\Expert-System\2lab\2lab\obj\Debug\2lab.csproj.GenerateResource.cache
+D:\Git\Expert-System\2lab\2lab\obj\Debug\2lab.exe
+D:\Git\Expert-System\2lab\2lab\obj\Debug\2lab.pdb
+D:\Git\Expert-System\2lab\2lab\bin\Debug\2lab.exe.config
+D:\Git\Expert-System\2lab\2lab\bin\Debug\2lab.exe
+D:\Git\Expert-System\2lab\2lab\bin\Debug\2lab.pdb

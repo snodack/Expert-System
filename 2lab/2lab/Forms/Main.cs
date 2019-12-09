@@ -196,29 +196,10 @@ namespace _2lab
             {
                 новыйПроектToolStripMenuItem_Click(sender, e);
             }
-            if (!File.Exists(project_path + "//check.zip"))
-                ZipFile.CreateFromDirectory(project_path, project_path + "//check.zip");
-
-            //ZipArchive.CreateEntry(p)
-            /*using (FileStream zipToOpen = new FileStream(@project_path + "//check.zip", FileMode.Open))
-            {
-                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
-                {
-                    ZipArchiveEntry readmeEntry = archive.CreateEntry("Readme.txt");
-                    using (StreamWriter writer1 = new StreamWriter(readmeEntry.Open()))
-                    {
-                        writer1.WriteLine("Information about this package.");
-                        writer1.WriteLine("========================");
-                    }
-                }
-            }*/
-            ///
-            FileStream zipToOpen = new FileStream(@project_path + "//check.zip", FileMode.Open);
-            ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update)
-
-            //
+            string dircache = "cache -" + DateTime.Now.Ticks;
+            Directory.CreateDirectory(project_path + dircache);
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
-            string filename = project_path;
+            string filename = project_path + dircache;
             System.IO.FileStream file = System.IO.File.Create(filename + "//Questions.xml");
             writer.Serialize(file, factors);
             file.Close();
@@ -233,8 +214,9 @@ namespace _2lab
             writer.Serialize(file, new Node_save(tree));
             file.Close();
 
-
-
+            if (!File.Exists(project_path + "//" + "check" + ".xyi"))
+                File.Delete(project_path + "//" + "check" + ".xyi");
+            ZipFile.CreateFromDirectory(project_path + dircache, project_path + "//" + "check" + ".xyi", CompressionLevel.Fastest, false);
         }
 
         private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)
