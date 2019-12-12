@@ -33,7 +33,7 @@ namespace _2lab
             WQuestion win = new WQuestion(answer);
             win.StartPosition = FormStartPosition.CenterScreen;
             win.FormClosed += this.ReDraw;
-            win.Show();
+            win.ShowDialog();
         }
 
         
@@ -101,7 +101,7 @@ namespace _2lab
                 WQuestion win = new WQuestion(factors[listBoxQuestion.SelectedIndex]);
                 win.StartPosition = FormStartPosition.CenterScreen;
                 win.FormClosed += this.ReDraw;
-                win.Show();
+                win.ShowDialog();//show
             }
         }
 

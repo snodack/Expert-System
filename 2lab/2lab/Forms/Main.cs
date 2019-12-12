@@ -25,12 +25,14 @@ namespace _2lab
         private Node contextselected = null;
         private Node tree;
         string project_path = "";
+        string project_folder_path = "";
         string perm = ".keks";
         WinNodes q_and_a;
         enum states { auto, handle };
         states state = states.auto;
         public void Main()
         {
+            this.MouseWheel += pictureBox1_MouseWheel;
             tree = new_node(new Point(50, 360));
             saveFileDialog1.Filter = "Kekduck | *.keks";
         }
@@ -60,9 +62,10 @@ namespace _2lab
         }
 
         //При закрытии окна выбора
-        public void Form1_WinNodeClosed(object sender, FormClosingEventArgs e)
+        public void Form1_WinNodeClosing(object sender, FormClosingEventArgs e)
         {
             Factor f = q_and_a.returner;
+            q_and_a = null;
             if (f == null || current_node == null) return;
             if (f != null)
             {
@@ -151,7 +154,7 @@ namespace _2lab
         }
         private void Drawvar(Node node, Graphics k, Pen p)
         {
-            Font f = new Font("Calibri", 10, FontStyle.Italic);
+            Font f = new Font("Calibri", 10, FontStyle.Underline);
             if (state == states.auto) {
             
                 if (node.variants.Count <= 0)
@@ -190,80 +193,6 @@ namespace _2lab
             start.Show();
             start.Start(tree);
         }
-
-        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (project_path == "")
-            {
-                новыйПроектToolStripMenuItem_Click(sender, e);
-            }
-            string dircache = "//cache-" + DateTime.Now.Ticks;
-            Directory.CreateDirectory(project_path + dircache);
-            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
-            string filename = project_path + dircache;
-            System.IO.FileStream file = System.IO.File.Create(filename + "//Questions.xml");
-            writer.Serialize(file, factors);
-            file.Close();
-
-            writer = new System.Xml.Serialization.XmlSerializer(typeof(List<Factor>));
-            file = System.IO.File.Create(filename + "//Factors.xml");
-            writer.Serialize(file, targets);
-            file.Close();
-
-            writer = new System.Xml.Serialization.XmlSerializer(typeof(Node_save));
-            file = System.IO.File.Create(filename + "//Nodes.xml");
-            writer.Serialize(file, new Node_save(tree));
-            file.Close();
-
-            if (File.Exists(project_path + "//" + "check" + perm))
-                File.Delete(project_path + "//" + "check" + perm);
-            ZipFile.CreateFromDirectory(project_path + dircache, project_path + "//" + "check" + perm, CompressionLevel.Fastest, false);
-            Directory.Delete(project_path + dircache, true);
-        }
-
-        private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.FileName != "")
-            {
-                project_path = openFileDialog1.FileName;
-            }
-            string dircache = "//cache -" + DateTime.Now.Ticks;
-            string project_folder_path = project_path + "/../";
-            Directory.CreateDirectory(project_folder_path + dircache);
-            ZipFile.ExtractToDirectory(project_path, project_folder_path + dircache);
-            string filename = project_folder_path + dircache +"//Questions.xml";
-            if (File.Exists(filename))
-            {
-                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
-                System.IO.StreamReader file = new System.IO.StreamReader(filename);
-                factors = (List<Question>)reader.Deserialize(file);
-                file.Close();
-            }
-            filename = project_folder_path + dircache +"//Factors.xml";
-            if (File.Exists(filename))
-            {
-                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Factor>));
-                System.IO.StreamReader file = new System.IO.StreamReader(filename);
-                targets = (List<Factor>)reader.Deserialize(file);
-                file.Close();
-
-            }
-            filename = project_folder_path + dircache +"//Nodes.xml";
-            if (File.Exists(filename))
-            {
-                Node_save tree_save;
-                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Node_save));
-                System.IO.StreamReader file = new System.IO.StreamReader(filename);
-                tree_save = (Node_save)reader.Deserialize(file);
-                file.Close();
-                tree = Init_node(tree_save, tree);
-                RDraw();
-            }
-            Directory.Delete(project_folder_path + dircache, true);
-
-
-        }
         public Node Init_node(Node_save node_save, Node tree)
         {
             Factor f = null;
@@ -300,11 +229,14 @@ namespace _2lab
 
         private void новыйПроектToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            if (folderBrowserDialog1.SelectedPath != "")
-            {
-                project_path = folderBrowserDialog1.SelectedPath;
-            }
+            Project_form prf = new Project_form();
+            prf.StartPosition = FormStartPosition.CenterScreen;
+            prf.FormClosing += newproject_Closing;
+            prf.ShowDialog();
+        }
+        public void newproject_Closing(object sender, FormClosingEventArgs e)
+        {
+            Console.WriteLine(sender);
         }
 
         private void редакторУзловToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,9 +249,8 @@ namespace _2lab
         {
             q_and_a = new WinNodes(factors, targets);
             q_and_a.StartPosition = FormStartPosition.CenterScreen;
-            q_and_a.FormClosing += this.Form1_WinNodeClosed;
-            q_and_a.Show();
-            q_and_a.Refresh();
+            q_and_a.FormClosing += this.Form1_WinNodeClosing;
+            q_and_a.ShowDialog();
         }
 
         private void редакторФакторовToolStripMenuItem_Click(object sender, EventArgs e)
@@ -350,10 +281,98 @@ namespace _2lab
 
         private void hScrollBar1_ValueChanged(object sender, EventArgs e)
         {
-            pictureBox1.Location = new Point(0 - hScrollBar1.Value * 10);
+            pictureBox1.Location = new Point(-hScrollBar1.Value * 60, pictureBox1.Location.Y);
         }
 
-        
+        private void vScrollBar1_ValueChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Location = new Point(pictureBox1.Location.X, 40 -vScrollBar1.Value * (pictureBox1.Height / 100));
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            int r = vScrollBar1.Value - e.Delta/50;
+            if (r < vScrollBar1.Minimum) r = vScrollBar1.Minimum;
+            else if (r > vScrollBar1.Maximum) r = vScrollBar1.Maximum;
+            vScrollBar1.Value = r;
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (project_folder_path == "")
+            {
+                новыйПроектToolStripMenuItem_Click(sender, e);
+                return;
+            }
+            string dircache = "//cache-" + DateTime.Now.Ticks;
+            Directory.CreateDirectory(project_folder_path + dircache);
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
+            string filename = project_folder_path + dircache;
+            System.IO.FileStream file = System.IO.File.Create(filename + "//Questions.xml");
+            writer.Serialize(file, factors);
+            file.Close();
+
+            writer = new System.Xml.Serialization.XmlSerializer(typeof(List<Factor>));
+            file = System.IO.File.Create(filename + "//Factors.xml");
+            writer.Serialize(file, targets);
+            file.Close();
+
+            writer = new System.Xml.Serialization.XmlSerializer(typeof(Node_save));
+            file = System.IO.File.Create(filename + "//Nodes.xml");
+            writer.Serialize(file, new Node_save(tree));
+            file.Close();
+
+            if (File.Exists(project_folder_path + "//" + "check" + perm))
+                File.Delete(project_folder_path + "//" + "check" + perm);
+            ZipFile.CreateFromDirectory(project_folder_path + dircache, project_folder_path + "//" + "check" + perm, CompressionLevel.Fastest, false);
+            Directory.Delete(project_folder_path + dircache, true);
+        }
+
+        private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "")
+            {
+                project_path = openFileDialog1.FileName;
+            }
+            else return;
+            string dircache = "//cache -" + DateTime.Now.Ticks;
+            project_folder_path = project_path + "/../";
+            Directory.CreateDirectory(project_folder_path + dircache);
+            ZipFile.ExtractToDirectory(project_path, project_folder_path + dircache);
+            string filename = project_folder_path + dircache + "//Questions.xml";
+            if (File.Exists(filename))
+            {
+                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Question>));
+                System.IO.StreamReader file = new System.IO.StreamReader(filename);
+                factors = (List<Question>)reader.Deserialize(file);
+                file.Close();
+            }
+            filename = project_folder_path + dircache + "//Factors.xml";
+            if (File.Exists(filename))
+            {
+                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Factor>));
+                System.IO.StreamReader file = new System.IO.StreamReader(filename);
+                targets = (List<Factor>)reader.Deserialize(file);
+                file.Close();
+
+            }
+            filename = project_folder_path + dircache + "//Nodes.xml";
+            if (File.Exists(filename))
+            {
+                Node_save tree_save;
+                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Node_save));
+                System.IO.StreamReader file = new System.IO.StreamReader(filename);
+                tree_save = (Node_save)reader.Deserialize(file);
+                file.Close();
+                tree = Init_node(tree_save, tree);
+                RDraw();
+            }
+            Directory.Delete(project_folder_path + dircache, true);
+
+
+        }
+
     }
 }
 

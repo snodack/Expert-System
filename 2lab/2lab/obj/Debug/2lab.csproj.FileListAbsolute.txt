@@ -75,3 +75,4 @@ D:\Git\Expert-System\2lab\2lab\obj\Debug\2lab.pdb
 D:\Git\Expert-System\2lab\2lab\bin\Debug\2lab.exe.config
 D:\Git\Expert-System\2lab\2lab\bin\Debug\2lab.exe
 D:\Git\Expert-System\2lab\2lab\bin\Debug\2lab.pdb
+D:\Git\Expert-System\2lab\2lab\obj\Debug\_2lab.Project_form.resources
