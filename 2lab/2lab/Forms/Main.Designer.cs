@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,12 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запуститьТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.очиститьХолстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.холстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenu_Node.SuspendLayout();
@@ -78,6 +85,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.окнаToolStripMenuItem,
+            this.инструментыToolStripMenuItem,
+            this.справкаToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -230,6 +239,49 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // инструментыToolStripMenuItem
+            // 
+            this.инструментыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.запуститьТестToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.очиститьХолстToolStripMenuItem});
+            this.инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
+            this.инструментыToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.инструментыToolStripMenuItem.Text = "Инструменты";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // запуститьТестToolStripMenuItem
+            // 
+            this.запуститьТестToolStripMenuItem.Name = "запуститьТестToolStripMenuItem";
+            this.запуститьТестToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.запуститьТестToolStripMenuItem.Text = "Запустить тест";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // очиститьХолстToolStripMenuItem
+            // 
+            this.очиститьХолстToolStripMenuItem.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.очиститьХолстToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.холстToolStripMenuItem});
+            this.очиститьХолстToolStripMenuItem.Name = "очиститьХолстToolStripMenuItem";
+            this.очиститьХолстToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.очиститьХолстToolStripMenuItem.Text = "Очистить Холст";
+            // 
+            // холстToolStripMenuItem
+            // 
+            this.холстToolStripMenuItem.BackColor = System.Drawing.Color.Red;
+            this.холстToolStripMenuItem.Name = "холстToolStripMenuItem";
+            this.холстToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.холстToolStripMenuItem.Text = "Холст";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -242,6 +294,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "TreeXp";
@@ -281,6 +334,12 @@
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem инструментыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запуститьТестToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem очиститьХолстToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem холстToolStripMenuItem;
     }
 }
 

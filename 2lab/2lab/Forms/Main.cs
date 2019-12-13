@@ -24,6 +24,7 @@ namespace _2lab
         public Node current_node = null;
         private Node contextselected = null;
         private Node tree;
+        string project_name = "";
         string project_path = "";
         string project_folder_path = "";
         string perm = ".keks";
@@ -189,9 +190,8 @@ namespace _2lab
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Test start = new Test();
-            start.Show();
-            start.Start(tree);
+            Test start = new Test(tree);
+            start.ShowDialog();
         }
         public Node Init_node(Node_save node_save, Node tree)
         {
@@ -236,7 +236,9 @@ namespace _2lab
         }
         public void newproject_Closing(object sender, FormClosingEventArgs e)
         {
-            Console.WriteLine(sender);
+            project_name = ((Project_form)(sender)).project_name;
+            project_folder_path = ((Project_form)(sender)).default_path;
+            сохранитьToolStripMenuItem_Click(this, e);
         }
 
         private void редакторУзловToolStripMenuItem_Click(object sender, EventArgs e)
@@ -324,7 +326,7 @@ namespace _2lab
 
             if (File.Exists(project_folder_path + "//" + "check" + perm))
                 File.Delete(project_folder_path + "//" + "check" + perm);
-            ZipFile.CreateFromDirectory(project_folder_path + dircache, project_folder_path + "//" + "check" + perm, CompressionLevel.Fastest, false);
+            ZipFile.CreateFromDirectory(project_folder_path + dircache, project_folder_path + "//" + project_name + perm, CompressionLevel.Fastest, false);
             Directory.Delete(project_folder_path + dircache, true);
         }
 
@@ -334,10 +336,11 @@ namespace _2lab
             if (openFileDialog1.FileName != "")
             {
                 project_path = openFileDialog1.FileName;
+                //project_folder_path = openFileDialog1.
             }
             else return;
             string dircache = "//cache -" + DateTime.Now.Ticks;
-            project_folder_path = project_path + "/../";
+            project_folder_path = Path.GetDirectoryName(project_path);
             Directory.CreateDirectory(project_folder_path + dircache);
             ZipFile.ExtractToDirectory(project_path, project_folder_path + dircache);
             string filename = project_folder_path + dircache + "//Questions.xml";

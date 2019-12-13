@@ -13,8 +13,8 @@ namespace _2lab
 {
     public partial class Project_form : Form
     {
-        string default_path = "";
-        string project_name = "";
+        public string default_path = "";
+        public string project_name = "";
         public Project_form()
         {
             InitializeComponent();

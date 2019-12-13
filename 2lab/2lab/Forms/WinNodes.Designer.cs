@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinNodes));
             this.listBoxQuestion = new System.Windows.Forms.ListBox();
             this.addQuestion = new System.Windows.Forms.Button();
             this.addAnswer = new System.Windows.Forms.Button();
@@ -143,6 +144,7 @@
             this.Controls.Add(this.listBoxQuestion);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WinNodes";
             this.Text = "Редактор узлов";
             this.ResumeLayout(false);

@@ -60,9 +60,9 @@
             // project_name_text
             // 
             this.project_name_text.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.project_name_text.Location = new System.Drawing.Point(98, 23);
+            this.project_name_text.Location = new System.Drawing.Point(131, 23);
             this.project_name_text.Name = "project_name_text";
-            this.project_name_text.Size = new System.Drawing.Size(373, 23);
+            this.project_name_text.Size = new System.Drawing.Size(340, 23);
             this.project_name_text.TabIndex = 2;
             this.project_name_text.MouseClick += new System.Windows.Forms.MouseEventHandler(this.project_name_text_MouseClick);
             this.project_name_text.TextChanged += new System.EventHandler(this.project_name_text_TextChanged);

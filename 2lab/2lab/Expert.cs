@@ -10,25 +10,16 @@ using System.Windows.Forms;
 
 namespace _2lab
 {
-    public partial class Test : Form
+    public partial class Expert : Form
     {
-        Node current_node;
-        Node tree;
-        List<object> removed = new List<object>();
-        Stack<Node> actions = new Stack<Node>(); 
-        public Test(Node _tree)
+        public Expert()
         {
-            tree = _tree;
             InitializeComponent();
-            Start(tree);
         }
+        Node current_node;
         public void Start(Node node)
         {
-            foreach (Control k in removed)
-            {
-                this.Controls.Remove(k);
-            }
-            removed.Clear();
+            this.Controls.Clear();
             current_node = node;
             if (node.child == null)
                 return;
@@ -48,42 +39,38 @@ namespace _2lab
             lb.Font = this.Font;
             lb.Text = node.child.Text;
             this.Controls.Add(lb);
-            removed.Add(lb);
             for (int i = 0; i < node.variants_tips.Count; i++)
             {
                 Button btn = new_Button(i);
                 this.Controls.Add(btn);
-                removed.Add(btn);
                 btn.Text = node.variants_tips[i].ToString();
-                
+
             }
         }
         public void new_Factor(Node node)
         {
             Label lb = new Label();
-            lb.Location = new Point((this.Width - lb.Width)/2, 108);
-            lb.Font = new Font(this.Font.FontFamily, 14,FontStyle.Bold);
+            lb.Location = new Point((this.Width - lb.Width) / 2, 108);
+            lb.Font = new Font(this.Font.FontFamily, 14, FontStyle.Bold);
             lb.Text = node.child.Text;
             this.Controls.Add(lb);
-            removed.Add(lb);
             RichTextBox text = new RichTextBox();
             text.Font = new Font(this.Font.FontFamily, 14, FontStyle.Regular);
             text.Text = node.child.info;
             text.Width = 572;
             text.Height = 32;
             text.Enabled = false;
-            text.Location = new Point((this.Width - text.Width)/2, 200);
+            text.Location = new Point((this.Width - text.Width) / 2, 200);
             text.BorderStyle = BorderStyle.None;
             text.BackColor = SystemColors.ScrollBar;
-            
+
             this.Controls.Add(text);
-            removed.Add(text);
 
         }
         ///переделать как-то
         public void choose_Factor(object sender, MouseEventArgs e)
         {
-            for (int i =0; i< current_node.variants_tips.Count; i++)
+            for (int i = 0; i < current_node.variants_tips.Count; i++)
             {
                 if (current_node.variants_tips[i].ToString() == ((Button)sender).Text)
                 {
@@ -103,11 +90,6 @@ namespace _2lab
             btn.Location = new Point(12, 160 + 40 * i);
             btn.MouseClick += this.choose_Factor;
             return btn;
-        }
-
-        private void restart_button_Click(object sender, EventArgs e)
-        {
-            Start(tree);
         }
     }
 }
