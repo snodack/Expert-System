@@ -59,12 +59,14 @@ namespace _2lab
             if (node.edited)
                 return;
             current_node = node;
+            current_node.BackColor = Color.Yellow;
             open_q_and_a();
         }
 
         //При закрытии окна выбора
         public void Form1_WinNodeClosing(object sender, FormClosingEventArgs e)
         {
+            current_node.BackColor = System.Drawing.Color.White;
             Factor f = q_and_a.returner;
             q_and_a = null;
             if (f == null || current_node == null) return;
@@ -335,6 +337,11 @@ namespace _2lab
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
             {
+                if (!File.Exists(openFileDialog1.FileName))
+                {
+                    MessageBox.Show("Такого файла не сущетвует");
+                    return;
+                }
                 project_path = openFileDialog1.FileName;
                 //project_folder_path = openFileDialog1.
             }

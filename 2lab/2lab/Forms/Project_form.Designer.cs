@@ -109,6 +109,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Project_form";
             this.Text = "Создание проекта";
             this.Load += new System.EventHandler(this.Project_form_Load);

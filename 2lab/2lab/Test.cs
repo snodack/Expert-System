@@ -24,6 +24,7 @@ namespace _2lab
         }
         public void Start(Node node)
         {
+            actions.Push(node);
             foreach (Control k in removed)
             {
                 this.Controls.Remove(k);
@@ -44,9 +45,12 @@ namespace _2lab
         public void new_Question(Node node)
         {
             Label lb = new Label();
-            lb.Location = new Point(268, 108);
             lb.Font = this.Font;
             lb.Text = node.child.Text;
+            lb.Location = new Point(0, 108);
+            lb.Width = this.Width;
+            lb.TextAlign = ContentAlignment.MiddleCenter;
+            lb.AutoSize = false;
             this.Controls.Add(lb);
             removed.Add(lb);
             for (int i = 0; i < node.variants_tips.Count; i++)
@@ -61,16 +65,19 @@ namespace _2lab
         public void new_Factor(Node node)
         {
             Label lb = new Label();
-            lb.Location = new Point((this.Width - lb.Width)/2, 108);
-            lb.Font = new Font(this.Font.FontFamily, 14,FontStyle.Bold);
+            lb.Location = new Point(0, 108);
+            lb.Width = this.Width;
+            lb.TextAlign = ContentAlignment.MiddleCenter;
+            lb.AutoSize = false;
+            lb.Font = new Font(this.Font.FontFamily, 12,FontStyle.Bold);
             lb.Text = node.child.Text;
             this.Controls.Add(lb);
             removed.Add(lb);
             RichTextBox text = new RichTextBox();
-            text.Font = new Font(this.Font.FontFamily, 14, FontStyle.Regular);
+            text.Font = new Font(this.Font.FontFamily, 12, FontStyle.Regular);
             text.Text = node.child.info;
-            text.Width = 572;
-            text.Height = 32;
+            text.Width = 580;
+            text.Height = 200;
             text.Enabled = false;
             text.Location = new Point((this.Width - text.Width)/2, 200);
             text.BorderStyle = BorderStyle.None;
@@ -87,6 +94,7 @@ namespace _2lab
             {
                 if (current_node.variants_tips[i].ToString() == ((Button)sender).Text)
                 {
+                    actions.Push(current_node);
                     Start(current_node.variants[i]);
                     break;
                 }
@@ -98,7 +106,7 @@ namespace _2lab
         {
             Button btn = new Button();
             btn.Font = this.Font;
-            btn.Width = 572;
+            btn.Width = 580;
             btn.Height = 32;
             btn.Location = new Point(12, 160 + 40 * i);
             btn.MouseClick += this.choose_Factor;
@@ -108,6 +116,15 @@ namespace _2lab
         private void restart_button_Click(object sender, EventArgs e)
         {
             Start(tree);
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            if (actions.Count == 0)
+            {
+                return;
+            }
+            Start(actions.Pop());
         }
     }
 }
