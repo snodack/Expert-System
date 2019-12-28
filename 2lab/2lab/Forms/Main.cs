@@ -28,7 +28,9 @@ namespace _2lab
         string project_path = "";
         string project_folder_path = "";
         string perm = ".keks";
+        /*windows*/
         WinNodes q_and_a;
+        Text_exp text_exp;
         enum states { auto, handle };
         states state = states.auto;
         public void Main()
@@ -383,6 +385,12 @@ namespace _2lab
 
         }
 
+        private void экспортВТекстToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            text_exp = new Text_exp(tree);
+            text_exp.StartPosition = FormStartPosition.CenterScreen;
+            text_exp.ShowDialog();
+        }
     }
 }
 

@@ -58,6 +58,9 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.экспортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортВТекстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортВКартинкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenu_Node.SuspendLayout();
@@ -85,13 +88,14 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.окнаToolStripMenuItem,
+            this.экспортToolStripMenuItem,
             this.инструментыToolStripMenuItem,
             this.справкаToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1389, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -282,12 +286,34 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // экспортToolStripMenuItem
+            // 
+            this.экспортToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.экспортВТекстToolStripMenuItem,
+            this.экспортВКартинкуToolStripMenuItem});
+            this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
+            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.экспортToolStripMenuItem.Text = "Экспорт";
+            // 
+            // экспортВТекстToolStripMenuItem
+            // 
+            this.экспортВТекстToolStripMenuItem.Name = "экспортВТекстToolStripMenuItem";
+            this.экспортВТекстToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.экспортВТекстToolStripMenuItem.Text = "Экспорт  в текст";
+            this.экспортВТекстToolStripMenuItem.Click += new System.EventHandler(this.экспортВТекстToolStripMenuItem_Click);
+            // 
+            // экспортВКартинкуToolStripMenuItem
+            // 
+            this.экспортВКартинкуToolStripMenuItem.Name = "экспортВКартинкуToolStripMenuItem";
+            this.экспортВКартинкуToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.экспортВКартинкуToolStripMenuItem.Text = "Экспорт в картинку";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1389, 681);
+            this.ClientSize = new System.Drawing.Size(1370, 681);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.hScrollBar1);
@@ -340,6 +366,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem очиститьХолстToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem холстToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem экспортToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem экспортВТекстToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem экспортВКартинкуToolStripMenuItem;
     }
 }
 
