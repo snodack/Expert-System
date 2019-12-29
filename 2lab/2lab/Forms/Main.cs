@@ -1,14 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Compression;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace _2lab
 {
@@ -334,8 +331,9 @@ namespace _2lab
             Directory.Delete(project_folder_path + dircache, true);
         }
 
-        private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)///Сделать чтобы открывал только нужные файлы
         {
+            openFileDialog1.Filter = "TreeXP files (*.keks)|*.keks";
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
             {
@@ -390,6 +388,78 @@ namespace _2lab
             text_exp = new Text_exp(tree);
             text_exp.StartPosition = FormStartPosition.CenterScreen;
             text_exp.ShowDialog();
+        }
+
+        private void экспортВКартинкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SvgFileDialog.ShowDialog();
+            string path = SvgFileDialog.FileName;
+            if (path == "")
+            {
+                return;
+            }
+            int max = find_max_height(tree, 0);
+            XmlWriterSettings settings = new XmlWriterSettings();
+            string svgtext = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + Environment.NewLine + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"" + Environment.NewLine + " \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">" + Environment.NewLine + "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" \t";
+
+            string svgbox = String.Format("viewBox=\"0.00 0.00 {0} {1}\">", 1920.0, max) + Environment.NewLine;
+            svgtext += svgbox;
+            svgtext += String.Format("<rect width = \"1920.00\" height = \"{0}\" fill = \"white\" />" + Environment.NewLine, max) ;
+            svgtext += nodeline_to_svg(tree);
+            svgtext += node_to_svg(tree);
+            svgtext += nodetext_to_svg(tree);
+            svgtext += "</svg>";
+            using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.UTF8))
+            {
+                Console.WriteLine(sw.Encoding.ToString());
+                sw.WriteLine(svgtext);
+            }
+
+        }
+        private int find_max_height(Node n, int max)/*Нахождение нижниге значения*/
+        {
+            int mc = n.Location.Y + n.height;
+            if (mc > max)
+            {
+                max = mc;
+            }
+            foreach(Node k in n.variants)
+            {
+                max = find_max_height(k, max);
+            }
+            return max;
+        } 
+        private string node_to_svg(Node node) //Отрисовка кнопок в svg
+        {
+            string but = String.Format("<rect x=\"{0}\" y=\"{1}\" rx=\"20\" ry=\"20\" width=\"{2}\" height=\"{3}\" style = \"fill:yellow;stroke:black;stroke-width:5;opacity:0.5\" />", node.Location.X, node.Location.Y,  node.Size.Width, node.Size.Height);
+            but += Environment.NewLine;
+            foreach (Node n in node.variants)
+            {
+                but += node_to_svg(n);  
+            }
+            return but;
+        }
+        private string nodeline_to_svg(Node node)//Отрисовка линий в svg
+        {
+            string lines = "";
+            foreach (Node n in node.variants)
+            {
+                //k.DrawString(node.variants_tips[i].ToString(), f, Brushes.Black, new PointF((node.Location.X + node.variants[i].Location.X) / 2 + node.Width / 2,
+                    //node.variants[i].Location.Y - 10));
+                lines += String.Format("<polyline points = \"{0},{1} {2},{3} {4},{5}\" style = \"fill:none;stroke:black;stroke-width:3\" />"+ Environment.NewLine ,node.Location.X + (node.Size.Width/2), node.Location.Y + (node.Size.Height), node.Location.X + (node.Size.Width / 2), n.Location.Y + node.Height / 2, n.Location.X , n.Location.Y + (node.Height/2));
+                lines += nodeline_to_svg(n);
+            }
+            return lines;
+        }
+        private string nodetext_to_svg(Node node)
+        {
+            string lines = "";
+            lines += String.Format("<text x = \"{0}\" y = \"{1}\" fill = \"black\" font-family = \"Calibri\" font-size = \"12\" >{2}</text>" + Environment.NewLine, node.Location.X + 10, node.Location.Y + node.Size.Height/2 + 5, node.Text);
+            foreach (Node n in node.variants)
+            {
+                lines += nodetext_to_svg(n);
+            }
+            return lines;
         }
     }
 }

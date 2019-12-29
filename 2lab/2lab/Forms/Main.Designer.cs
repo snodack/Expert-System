@@ -42,6 +42,9 @@
             this.редакторУзловToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редакторФакторовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редакторЦелейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортВТекстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортВКартинкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запуститьТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -58,9 +61,7 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.button1 = new System.Windows.Forms.Button();
-            this.экспортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.экспортВТекстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.экспортВКартинкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SvgFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenu_Node.SuspendLayout();
@@ -174,6 +175,29 @@
             this.редакторЦелейToolStripMenuItem.Text = "Редактор целей";
             this.редакторЦелейToolStripMenuItem.Click += new System.EventHandler(this.редакторЦелейToolStripMenuItem_Click);
             // 
+            // экспортToolStripMenuItem
+            // 
+            this.экспортToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.экспортВТекстToolStripMenuItem,
+            this.экспортВКартинкуToolStripMenuItem});
+            this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
+            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.экспортToolStripMenuItem.Text = "Экспорт";
+            // 
+            // экспортВТекстToolStripMenuItem
+            // 
+            this.экспортВТекстToolStripMenuItem.Name = "экспортВТекстToolStripMenuItem";
+            this.экспортВТекстToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.экспортВТекстToolStripMenuItem.Text = "Экспорт  в текст";
+            this.экспортВТекстToolStripMenuItem.Click += new System.EventHandler(this.экспортВТекстToolStripMenuItem_Click);
+            // 
+            // экспортВКартинкуToolStripMenuItem
+            // 
+            this.экспортВКартинкуToolStripMenuItem.Name = "экспортВКартинкуToolStripMenuItem";
+            this.экспортВКартинкуToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.экспортВКартинкуToolStripMenuItem.Text = "Экспорт в картинку";
+            this.экспортВКартинкуToolStripMenuItem.Click += new System.EventHandler(this.экспортВКартинкуToolStripMenuItem_Click);
+            // 
             // инструментыToolStripMenuItem
             // 
             this.инструментыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -260,7 +284,7 @@
             this.hScrollBar1.Maximum = 10;
             this.hScrollBar1.Minimum = -1;
             this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(1361, 17);
+            this.hScrollBar1.Size = new System.Drawing.Size(1341, 17);
             this.hScrollBar1.TabIndex = 4;
             this.hScrollBar1.ValueChanged += new System.EventHandler(this.hScrollBar1_ValueChanged);
             // 
@@ -268,9 +292,9 @@
             // 
             this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vScrollBar1.Location = new System.Drawing.Point(1370, 24);
+            this.vScrollBar1.Location = new System.Drawing.Point(1351, 40);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(19, 647);
+            this.vScrollBar1.Size = new System.Drawing.Size(19, 612);
             this.vScrollBar1.TabIndex = 5;
             this.vScrollBar1.ValueChanged += new System.EventHandler(this.vScrollBar1_ValueChanged);
             // 
@@ -278,35 +302,15 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Enabled = false;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1364, 658);
+            this.button1.Location = new System.Drawing.Point(1344, 655);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 25);
+            this.button1.Size = new System.Drawing.Size(26, 25);
             this.button1.TabIndex = 6;
             this.button1.Text = "button1";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // экспортToolStripMenuItem
-            // 
-            this.экспортToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.экспортВТекстToolStripMenuItem,
-            this.экспортВКартинкуToolStripMenuItem});
-            this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.экспортToolStripMenuItem.Text = "Экспорт";
-            // 
-            // экспортВТекстToolStripMenuItem
-            // 
-            this.экспортВТекстToolStripMenuItem.Name = "экспортВТекстToolStripMenuItem";
-            this.экспортВТекстToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.экспортВТекстToolStripMenuItem.Text = "Экспорт  в текст";
-            this.экспортВТекстToolStripMenuItem.Click += new System.EventHandler(this.экспортВТекстToolStripMenuItem_Click);
-            // 
-            // экспортВКартинкуToolStripMenuItem
-            // 
-            this.экспортВКартинкуToolStripMenuItem.Name = "экспортВКартинкуToolStripMenuItem";
-            this.экспортВКартинкуToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.экспортВКартинкуToolStripMenuItem.Text = "Экспорт в картинку";
             // 
             // Form1
             // 
@@ -369,6 +373,7 @@
         private System.Windows.Forms.ToolStripMenuItem экспортToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem экспортВТекстToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem экспортВКартинкуToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog SvgFileDialog;
     }
 }
 
