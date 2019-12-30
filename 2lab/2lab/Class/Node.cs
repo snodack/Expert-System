@@ -18,7 +18,7 @@ namespace _2lab
             this.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
         }
         //public String info = "";
-        public Factor child; //text
+        public Factor child = null; //text
         public List<Node> variants = new List<Node>(); //save
         public List<object> variants_tips = new List<object>(); //save
         public bool edited = false;
@@ -38,6 +38,7 @@ namespace _2lab
                 Text = "";
                 variants_tips.Clear();
                 child = null;
+                Width = 75;
                 return;
             }
             Text = f.Text;

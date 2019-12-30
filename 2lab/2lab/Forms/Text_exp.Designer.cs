@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Text_exp));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ok_button = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -78,6 +79,7 @@
             this.Controls.Add(this.ok_button);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Text_exp";
             this.Text = "Экспорт в текст";
             this.ResumeLayout(false);

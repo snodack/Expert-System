@@ -46,7 +46,7 @@
             this.restart_button.Size = new System.Drawing.Size(148, 34);
             this.restart_button.TabIndex = 0;
             this.restart_button.TabStop = false;
-            this.restart_button.Text = "Начать сначала(R)";
+            this.restart_button.Text = "Начать с начала";
             this.restart_button.UseVisualStyleBackColor = false;
             this.restart_button.Click += new System.EventHandler(this.restart_button_Click);
             // 
@@ -74,7 +74,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Test";
-            this.Text = "Test";
+            this.Text = "Тестирование";
             this.ResumeLayout(false);
             this.PerformLayout();
 

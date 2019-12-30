@@ -36,6 +36,7 @@ namespace _2lab
             this.MouseWheel += pictureBox1_MouseWheel;
             tree = new_node(new Point(50, 360));
             saveFileDialog1.Filter = "TreeXP files (*.keks)|*.keks";
+            //новыйПроектToolStripMenuItem_Click(new object(), null);
         }
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -65,6 +66,7 @@ namespace _2lab
         //При закрытии окна выбора
         public void Form1_WinNodeClosing(object sender, FormClosingEventArgs e)
         {
+            if (current_node == null) return;
             current_node.BackColor = System.Drawing.Color.White;
             Factor f = q_and_a.returner;
             q_and_a = null;
@@ -189,10 +191,46 @@ namespace _2lab
             }
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) //Запуск теста
         {
+            List<Node> empties = completetion_check(tree);
+            if (empties.Count != 0)
+            {
+                if (DialogResult.OK ==MessageBox.Show("Имеются пустые узлы"))
+                {
+                    foreach(Node cch in empties)
+                    {
+                        cch.BackColor = Color.White;
+                    }
+                }
+                return;
+            }
             Test start = new Test(tree);
             start.ShowDialog();
+        }
+
+        private List<Node> completetion_check(Node node)/*Возвращает список незавершенных узлов*/
+        {
+            Stack<Node> stack = new Stack<Node>();
+            List<Node> empties = new List<Node>();
+            stack.Push(node);
+            while (stack.Count > 0)
+            {
+                Node up = stack.Pop();
+                foreach (Node i in up.variants)
+                {
+                    stack.Push(i);
+                }
+                if (up.child == null)
+                {
+                    empties.Add(up);
+                }
+            }
+            foreach(Node n in empties)
+            {
+                n.BackColor = Color.Red;
+            }
+            return empties;
         }
         public Node Init_node(Node_save node_save, Node tree)
         {
@@ -237,9 +275,16 @@ namespace _2lab
         }
         public void newproject_Closing(object sender, FormClosingEventArgs e)
         {
-            project_name = ((Project_form)(sender)).project_name;
-            project_folder_path = ((Project_form)(sender)).default_path;
-            сохранитьToolStripMenuItem_Click(this, e);
+            if (DialogResult.OK == ((Project_form)sender).DialogResult)
+            {
+                clear_node(tree);
+                tree.f_harness();
+                RDraw();
+                project_name = ((Project_form)(sender)).project_name;
+                project_folder_path = ((Project_form)(sender)).default_path;
+                сохранитьToolStripMenuItem_Click(this, e);
+
+            }
         }
 
         private void редакторУзловToolStripMenuItem_Click(object sender, EventArgs e)
@@ -339,9 +384,16 @@ namespace _2lab
 
         private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)///Сделать чтобы открывал только нужные файлы
         {
+            /*При открытии  удалить холст*/
             openFileDialog1.Filter = "TreeXP files (*.keks)|*.keks";
             openFileDialog1.FileName = "";
-            openFileDialog1.ShowDialog();
+            if (DialogResult.OK == openFileDialog1.ShowDialog())
+            {
+                clear_node(tree);
+                tree.f_harness();
+                RDraw();
+            }
+            else return;
             if (openFileDialog1.FileName != "")
             {
                 if (!File.Exists(openFileDialog1.FileName))
@@ -350,7 +402,6 @@ namespace _2lab
                     return;
                 }
                 project_path = openFileDialog1.FileName;
-                //project_folder_path = openFileDialog1.
             }
             else return;
             string dircache = "//cache -" + DateTime.Now.Ticks;
@@ -471,7 +522,7 @@ namespace _2lab
             }
             for (int i = 0; i < node.variants_tips.Count; i++)
             {
-                lines += String.Format("<text x = \"{0}\" y = \"{1}\" fill = \"black\" font-family = \"Calibri\" font-size = \"10\" text-decoration=\"underline\" >{2}</text>" + Environment.NewLine, (node.Location.X + node.variants[i].Location.X) / 2 + node.Width / 2, node.variants[i].Location.Y - 10, node.variants_tips[i].ToString());
+                lines += String.Format("<text x = \"{0}\" y = \"{1}\" fill = \"black\" font-family = \"Calibri\" font-size = \"12\" text-decoration=\"underline\" >{2}</text>" + Environment.NewLine, (node.Location.X + node.variants[i].Location.X) / 2 + node.Width / 2, node.variants[i].Location.Y - 10, node.variants_tips[i].ToString());
             }
             return lines;
         }
@@ -501,6 +552,11 @@ namespace _2lab
             }
             n.variants.Clear();
 
+
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

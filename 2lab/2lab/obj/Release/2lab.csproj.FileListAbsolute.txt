@@ -1,0 +1,15 @@
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\bin\Release\2lab.exe.config
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\bin\Release\2lab.exe
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\bin\Release\2lab.pdb
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\2lab.csprojAssemblyReference.cache
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.Form1.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.Project_form.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.Text_exp.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.Properties.Resources.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.WinNodes.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.WQuestion.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.WAnswer.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\_2lab.Test.resources
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\2lab.csproj.GenerateResource.cache
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\2lab.exe
+D:\Users\snodack\Documents\GitHub\Expert-System\2lab\2lab\obj\Release\2lab.pdb

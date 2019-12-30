@@ -50,7 +50,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.очиститьХолстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.холстToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -91,7 +90,6 @@
             this.окнаToolStripMenuItem,
             this.экспортToolStripMenuItem,
             this.инструментыToolStripMenuItem,
-            this.справкаToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -164,6 +162,7 @@
             // 
             // редакторФакторовToolStripMenuItem
             // 
+            this.редакторФакторовToolStripMenuItem.Enabled = false;
             this.редакторФакторовToolStripMenuItem.Name = "редакторФакторовToolStripMenuItem";
             this.редакторФакторовToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.редакторФакторовToolStripMenuItem.Text = "Редактор факторов";
@@ -171,6 +170,7 @@
             // 
             // редакторЦелейToolStripMenuItem
             // 
+            this.редакторЦелейToolStripMenuItem.Enabled = false;
             this.редакторЦелейToolStripMenuItem.Name = "редакторЦелейToolStripMenuItem";
             this.редакторЦелейToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.редакторЦелейToolStripMenuItem.Text = "Редактор целей";
@@ -212,14 +212,14 @@
             // запуститьТестToolStripMenuItem
             // 
             this.запуститьТестToolStripMenuItem.Name = "запуститьТестToolStripMenuItem";
-            this.запуститьТестToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.запуститьТестToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.запуститьТестToolStripMenuItem.Text = "Запустить тест";
             this.запуститьТестToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(151, 6);
             // 
             // очиститьХолстToolStripMenuItem
             // 
@@ -227,22 +227,16 @@
             this.очиститьХолстToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.холстToolStripMenuItem});
             this.очиститьХолстToolStripMenuItem.Name = "очиститьХолстToolStripMenuItem";
-            this.очиститьХолстToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.очиститьХолстToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.очиститьХолстToolStripMenuItem.Text = "Очистить";
             // 
             // холстToolStripMenuItem
             // 
             this.холстToolStripMenuItem.BackColor = System.Drawing.Color.Red;
             this.холстToolStripMenuItem.Name = "холстToolStripMenuItem";
-            this.холстToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.холстToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.холстToolStripMenuItem.Text = "Холст";
             this.холстToolStripMenuItem.Click += new System.EventHandler(this.холстToolStripMenuItem_Click);
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // toolStripMenuItem1
             // 
@@ -368,7 +362,6 @@
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem инструментыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem запуститьТестToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem очиститьХолстToolStripMenuItem;

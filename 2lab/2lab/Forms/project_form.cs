@@ -100,6 +100,7 @@ namespace _2lab
 
         private void ready_button_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.OK;
             this.Close();
         }
     }
