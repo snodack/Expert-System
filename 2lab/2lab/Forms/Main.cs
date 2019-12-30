@@ -34,7 +34,7 @@ namespace _2lab
         public void Main()
         {
             this.MouseWheel += pictureBox1_MouseWheel;
-            tree = new_node(new Point(50, 360));
+            tree = new_node(new Point(50, 100));
             saveFileDialog1.Filter = "TreeXP files (*.keks)|*.keks";
             //новыйПроектToolStripMenuItem_Click(new object(), null);
         }
