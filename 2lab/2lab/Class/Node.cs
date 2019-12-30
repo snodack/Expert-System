@@ -31,8 +31,15 @@ namespace _2lab
                 BackColor = System.Drawing.Color.White;
             }
         }
-        public void f_harness(Factor f)
+        public void f_harness(Factor f = null)
         {
+            if (f == null)
+            {
+                Text = "";
+                variants_tips.Clear();
+                child = null;
+                return;
+            }
             Text = f.Text;
             variants_tips = f.variants;
             child = f;

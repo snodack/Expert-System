@@ -25,6 +25,7 @@ namespace _2lab
         string project_path = "";
         string project_folder_path = "";
         string perm = ".keks";
+        bool unsaved = false;
         /*windows*/
         WinNodes q_and_a;
         Text_exp text_exp;
@@ -34,7 +35,7 @@ namespace _2lab
         {
             this.MouseWheel += pictureBox1_MouseWheel;
             tree = new_node(new Point(50, 360));
-            saveFileDialog1.Filter = "Kekduck | *.keks";
+            saveFileDialog1.Filter = "TreeXP files (*.keks)|*.keks";
         }
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -45,7 +46,6 @@ namespace _2lab
         {
             Node node = new Node();
             pictureBox1.Controls.Add(node);
-            //node.MouseClick += this.Place;
             node.MouseDown += this.Node_edit;
             node.MouseMove += pictureBox1_MouseMove;
             node.MouseUp += node.Node_MouseUp;
@@ -329,11 +329,18 @@ namespace _2lab
                 File.Delete(project_folder_path + "//" + "check" + perm);
             ZipFile.CreateFromDirectory(project_folder_path + dircache, project_folder_path + "//" + project_name + perm, CompressionLevel.Fastest, false);
             Directory.Delete(project_folder_path + dircache, true);
+            unsaved = false;
+        }
+        private void сохранитьИВыйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            unsaved = true;
+            сохранитьToolStripMenuItem_Click(sender, e);
         }
 
         private void отрытьToolStripMenuItem_Click(object sender, EventArgs e)///Сделать чтобы открывал только нужные файлы
         {
             openFileDialog1.Filter = "TreeXP files (*.keks)|*.keks";
+            openFileDialog1.FileName = "";
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
             {
@@ -392,19 +399,21 @@ namespace _2lab
 
         private void экспортВКартинкуToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SvgFileDialog.Filter = "Svg files (*.svg)|*.svg";
             SvgFileDialog.ShowDialog();
             string path = SvgFileDialog.FileName;
             if (path == "")
             {
                 return;
             }
-            int max = find_max_height(tree, 0);
+            int maxh = find_max_height(tree, 0);
+            int maxw = find_max_weight(tree, 0);
             XmlWriterSettings settings = new XmlWriterSettings();
             string svgtext = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + Environment.NewLine + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"" + Environment.NewLine + " \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">" + Environment.NewLine + "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" \t";
 
-            string svgbox = String.Format("viewBox=\"0.00 0.00 {0} {1}\">", 1920.0, max) + Environment.NewLine;
+            string svgbox = String.Format("viewBox=\"0.00 0.00 {0} {1}\">", maxw, maxh) + Environment.NewLine;
             svgtext += svgbox;
-            svgtext += String.Format("<rect width = \"1920.00\" height = \"{0}\" fill = \"white\" />" + Environment.NewLine, max) ;
+            svgtext += String.Format("<rect width = \"1920.00\" height = \"{0}\" fill = \"white\" />" + Environment.NewLine, maxh) ;
             svgtext += nodeline_to_svg(tree);
             svgtext += node_to_svg(tree);
             svgtext += nodetext_to_svg(tree);
@@ -428,7 +437,20 @@ namespace _2lab
                 max = find_max_height(k, max);
             }
             return max;
-        } 
+        }
+        private int find_max_weight(Node n, int max)
+        {
+            int mc = n.Location.X + n.Width;
+            if (mc > max)
+            {
+                max = mc;
+            }
+            foreach (Node k in n.variants)
+            {
+                max = find_max_weight(k, max);
+            }
+            return max;
+        }
         private string node_to_svg(Node node) //Отрисовка кнопок в svg
         {
             string but = String.Format("<rect x=\"{0}\" y=\"{1}\" rx=\"20\" ry=\"20\" width=\"{2}\" height=\"{3}\" style = \"fill:yellow;stroke:black;stroke-width:5;opacity:0.5\" />", node.Location.X, node.Location.Y,  node.Size.Width, node.Size.Height);
@@ -439,15 +461,17 @@ namespace _2lab
             }
             return but;
         }
-        private string nodeline_to_svg(Node node)//Отрисовка линий в svg
+        private string nodeline_to_svg(Node node)//Отрисовка линий и подписи в svg
         {
             string lines = "";
             foreach (Node n in node.variants)
             {
-                //k.DrawString(node.variants_tips[i].ToString(), f, Brushes.Black, new PointF((node.Location.X + node.variants[i].Location.X) / 2 + node.Width / 2,
-                    //node.variants[i].Location.Y - 10));
                 lines += String.Format("<polyline points = \"{0},{1} {2},{3} {4},{5}\" style = \"fill:none;stroke:black;stroke-width:3\" />"+ Environment.NewLine ,node.Location.X + (node.Size.Width/2), node.Location.Y + (node.Size.Height), node.Location.X + (node.Size.Width / 2), n.Location.Y + node.Height / 2, n.Location.X , n.Location.Y + (node.Height/2));
                 lines += nodeline_to_svg(n);
+            }
+            for (int i = 0; i < node.variants_tips.Count; i++)
+            {
+                lines += String.Format("<text x = \"{0}\" y = \"{1}\" fill = \"black\" font-family = \"Calibri\" font-size = \"10\" text-decoration=\"underline\" >{2}</text>" + Environment.NewLine, (node.Location.X + node.variants[i].Location.X) / 2 + node.Width / 2, node.variants[i].Location.Y - 10, node.variants_tips[i].ToString());
             }
             return lines;
         }
@@ -460,6 +484,24 @@ namespace _2lab
                 lines += nodetext_to_svg(n);
             }
             return lines;
+        }
+
+        private void холстToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clear_node(tree);
+            tree.f_harness();
+            RDraw();
+        }
+        private void clear_node(Node n)
+        {
+            foreach (Node t in n.variants)
+            {
+                clear_node(t);
+                pictureBox1.Controls.Remove(t);
+            }
+            n.variants.Clear();
+
+
         }
     }
 }

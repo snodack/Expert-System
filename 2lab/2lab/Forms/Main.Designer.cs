@@ -143,6 +143,7 @@
             this.сохранитьИВыйтиToolStripMenuItem.Name = "сохранитьИВыйтиToolStripMenuItem";
             this.сохранитьИВыйтиToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.сохранитьИВыйтиToolStripMenuItem.Text = "Сохранить и выйти";
+            this.сохранитьИВыйтиToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИВыйтиToolStripMenuItem_Click);
             // 
             // окнаToolStripMenuItem
             // 
@@ -211,13 +212,14 @@
             // запуститьТестToolStripMenuItem
             // 
             this.запуститьТестToolStripMenuItem.Name = "запуститьТестToolStripMenuItem";
-            this.запуститьТестToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.запуститьТестToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.запуститьТестToolStripMenuItem.Text = "Запустить тест";
+            this.запуститьТестToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(158, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // очиститьХолстToolStripMenuItem
             // 
@@ -225,15 +227,16 @@
             this.очиститьХолстToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.холстToolStripMenuItem});
             this.очиститьХолстToolStripMenuItem.Name = "очиститьХолстToolStripMenuItem";
-            this.очиститьХолстToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.очиститьХолстToolStripMenuItem.Text = "Очистить Холст";
+            this.очиститьХолстToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.очиститьХолстToolStripMenuItem.Text = "Очистить";
             // 
             // холстToolStripMenuItem
             // 
             this.холстToolStripMenuItem.BackColor = System.Drawing.Color.Red;
             this.холстToolStripMenuItem.Name = "холстToolStripMenuItem";
-            this.холстToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.холстToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.холстToolStripMenuItem.Text = "Холст";
+            this.холстToolStripMenuItem.Click += new System.EventHandler(this.холстToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
